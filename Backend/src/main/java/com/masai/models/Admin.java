@@ -1,12 +1,9 @@
 package com.masai.models;
 
-import java.util.List;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,16 +12,10 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Route {
+public class Admin {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int routeId;
-    private String routeFrom;
-    private String routeTo;
-    private int distance;
-
-    // One route can have multiple buses
-    @OneToMany(mappedBy = "route") // "route" refers to the 'route' property in the Bus class
-    private List<Bus> buses;
-
+    private int adminId;
+    private String adminUsername;
+    private String adminPassword;
 }

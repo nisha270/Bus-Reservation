@@ -4,46 +4,39 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.masai.models.Bus;
+import com.masai.models.Route;
 
 @Service
-public class BusServiceImpl implements BusService{
+public class RouteServiceImpl implements RouteService {
 
 	@Override
-	public Bus addBus(Bus bus) {
+	public Route addRoute(Route route) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Bus updateBus(Bus bus) {
+	public Route updateRoute(Route route) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Bus deleteBus(int busId) {
+	public Route deleteRoute(int routeId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Bus viewBus(int busId) {
+	public Route viewRoute(int routeId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Bus> viewBusByType(String busType) {
+	public List<Route> viewAllRoutes() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
-	public List<Bus> viewAllBuses() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	
 }

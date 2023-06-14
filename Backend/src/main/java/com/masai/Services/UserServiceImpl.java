@@ -4,46 +4,39 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.masai.models.Bus;
+import com.masai.models.User;
 
 @Service
-public class BusServiceImpl implements BusService{
+public class UserServiceImpl implements UserService {
 
 	@Override
-	public Bus addBus(Bus bus) {
+	public User addUser(User user) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Bus updateBus(Bus bus) {
+	public User updateUser(User user) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Bus deleteBus(int busId) {
+	public User deleteUser(int userId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Bus viewBus(int busId) {
+	public User viewUser(int userId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Bus> viewBusByType(String busType) {
+	public List<User> viewAllUsers() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
-	public List<Bus> viewAllBuses() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	
 }

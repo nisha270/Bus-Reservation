@@ -1,49 +1,49 @@
 package com.masai.Services;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.masai.models.Bus;
+import com.masai.models.Reservation;
 
 @Service
-public class BusServiceImpl implements BusService{
+public class ReservationServiceImpl implements ReservationService {
 
 	@Override
-	public Bus addBus(Bus bus) {
+	public Reservation addReservation(Reservation reservation) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Bus updateBus(Bus bus) {
+	public Reservation updateReservation(Reservation reservation) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Bus deleteBus(int busId) {
+	public Reservation deleteReservation(int reservationId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Bus viewBus(int busId) {
+	public Reservation viewReservation(int reservationId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Bus> viewBusByType(String busType) {
+	public List<Reservation> viewAllReservations() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Bus> viewAllBuses() {
+	public List<Reservation> getAllReservations(LocalDate date) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	
 }
