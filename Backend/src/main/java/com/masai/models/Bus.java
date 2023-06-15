@@ -1,7 +1,5 @@
 package com.masai.models;
 
-import java.time.LocalTime;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -11,6 +9,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,6 +20,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Table(name="bus")
 public class Bus {
+	
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int busId;
@@ -44,15 +44,15 @@ public class Bus {
     @Column(name="route_to")
     private String routeTo;
     
-    @NotBlank(message="Please mention number of seats")
+    @NotNull(message="Please mention number of seats")
     @Column(name="seats")
     private int seats;
     
     @Column(name="arrival_time")
-    private LocalTime arrivalTime;
+    private String arrivalTime;
     
     @Column(name="departure_time")
-    private LocalTime departureTime;
+    private String departureTime;
     
     @Column(name="available_seats")
     private int availableSeats;
