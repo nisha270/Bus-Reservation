@@ -2,13 +2,16 @@ package com.masai.Services;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.masai.models.Bus;
 
 @Service
 public class BusServiceImpl implements BusService{
-
+	@Autowired
+	
+	
 	@Override
 	public Bus addBus(Bus bus) {
 		// TODO Auto-generated method stub
