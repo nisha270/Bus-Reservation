@@ -12,7 +12,9 @@ import org.springframework.stereotype.Service;
 
 import com.masai.Exceptions.BusExceptions;
 import com.masai.Repository.BusRepository;
+import com.masai.Repository.RouteRepository;
 import com.masai.models.Bus;
+import com.masai.models.Route;
 
 
 @Service
@@ -20,9 +22,17 @@ public class BusServiceImpl implements BusService{
 	
 	@Autowired
 	BusRepository busRepository;
+	
+	@Autowired
+	RouteRepository routeRepository;
 
 	@Override
 	public String addBus(Bus bus) {
+		
+//		Route busRoute = bus.getRoute();
+//		
+//		Optional<Route> opt = routeRepository.findById(busRoute);
+		
 		busRepository.save(bus);
 		return "Bus successfully added";
 	}
