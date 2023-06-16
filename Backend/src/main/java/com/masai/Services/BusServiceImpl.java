@@ -1,48 +1,117 @@
 package com.masai.Services;
 
+import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import com.masai.Exceptions.BusExceptions;
+import com.masai.Repository.BusRepository;
+import com.masai.Repository.RouteRepository;
 import com.masai.models.Bus;
+import com.masai.models.Route;
+
 
 @Service
 public class BusServiceImpl implements BusService{
+	
+	@Autowired
+	BusRepository busRepository;
+	
+	@Autowired
+	RouteRepository routeRepository;
 
 	@Override
-	public Bus addBus(Bus bus) {
-		// TODO Auto-generated method stub
-		return null;
+	public String addBus(Bus bus, Integer routeId) {
+		
+
+		Optional<Route> opt = routeRepository.findById(routeId);
+		if(!opt.isPresent()) {
+			throw new BusExceptions("The Route you entered does not exist");
+		}
+		Route route = opt.get();
+		List<Bus> busList = route.getBuses();
+		if(busList == null) {
+			busList = new ArrayList<>();
+		}
+		busList.add(bus);
+		route.setBuses(busList);
+		bus.setRoute(route);
+		busRepository.save(bus);
+		return "Bus successfully added";
+		
+		
 	}
 
 	@Override
-	public Bus updateBus(Bus bus) {
-		// TODO Auto-generated method stub
-		return null;
+	public String updateBus(Bus bus) {
+		
+		Integer busId = bus.getBusId();
+		Optional<Bus> opt = busRepository.findById(busId);
+		
+		if(!opt.isPresent()) {
+			throw new BusExceptions("Please enter valid bus Id");
+		}
+		Bus toUpdateBus = opt.get();
+		
+		toUpdateBus.setBusName(bus.getBusName());
+		toUpdateBus.setDriverName(bus.getDriverName());
+		toUpdateBus.setBusType(bus.getBusType());
+		toUpdateBus.setSeats(bus.getSeats());
+		toUpdateBus.setArrivalTime(bus.getArrivalTime());
+		toUpdateBus.setDepartureTime(bus.getDepartureTime());
+		toUpdateBus.setAvailableSeats(bus.getAvailableSeats());
+		
+		busRepository.save(toUpdateBus);
+		
+		
+		return "Bus Successfully Updated";
+		
 	}
 
 	@Override
-	public Bus deleteBus(int busId) {
-		// TODO Auto-generated method stub
-		return null;
+	public String deleteBus(int busId) {
+		
+		Optional<Bus> opt = busRepository.findById(busId);
+		if(!opt.isPresent()) {
+			throw new BusExceptions("Please enter valid bus Id");
+		}
+		Bus busToBeDeleted = opt.get();
+		busRepository.delete(busToBeDeleted);
+		return "Bus successfully deleted";
 	}
 
 	@Override
 	public Bus viewBus(int busId) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		Optional<Bus> opt = busRepository.findById(busId);
+		if(!opt.isPresent()) {
+			throw new BusExceptions("Please enter valid bus Id");
+		}
+		Bus busDetail = opt.get();
+		return busDetail;
 	}
 
 	@Override
 	public List<Bus> viewBusByType(String busType) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Bus> allBus = busRepository.getBusByBusType(busType);
+		return allBus;		
 	}
 
 	@Override
-	public List<Bus> viewAllBuses() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Bus> getAllBusPageWise(Integer pageNumber,Integer numberOfRecords){
+		
+		Pageable p = PageRequest.of(pageNumber - 1, numberOfRecords);
+		Page<Bus> page = busRepository.findAll(p);
+		List<Bus> buses = page.getContent();
+		return buses;
+		
 	}
 
 	
