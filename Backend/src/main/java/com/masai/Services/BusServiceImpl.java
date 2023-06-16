@@ -1,6 +1,7 @@
 package com.masai.Services;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,14 +28,25 @@ public class BusServiceImpl implements BusService{
 	RouteRepository routeRepository;
 
 	@Override
-	public String addBus(Bus bus) {
+	public String addBus(Bus bus, Integer routeId) {
 		
-//		Route busRoute = bus.getRoute();
-//		
-//		Optional<Route> opt = routeRepository.findById(busRoute);
-		
+
+		Optional<Route> opt = routeRepository.findById(routeId);
+		if(!opt.isPresent()) {
+			throw new BusExceptions("The Route you entered does not exist");
+		}
+		Route route = opt.get();
+		List<Bus> busList = route.getBuses();
+		if(busList == null) {
+			busList = new ArrayList<>();
+		}
+		busList.add(bus);
+		route.setBuses(busList);
+		bus.setRoute(route);
 		busRepository.save(bus);
 		return "Bus successfully added";
+		
+		
 	}
 
 	@Override
@@ -51,8 +63,6 @@ public class BusServiceImpl implements BusService{
 		toUpdateBus.setBusName(bus.getBusName());
 		toUpdateBus.setDriverName(bus.getDriverName());
 		toUpdateBus.setBusType(bus.getBusType());
-		toUpdateBus.setRouteFrom(bus.getRouteFrom());
-		toUpdateBus.setRouteTo(bus.getRouteTo());
 		toUpdateBus.setSeats(bus.getSeats());
 		toUpdateBus.setArrivalTime(bus.getArrivalTime());
 		toUpdateBus.setDepartureTime(bus.getDepartureTime());
@@ -99,7 +109,7 @@ public class BusServiceImpl implements BusService{
 		
 		Pageable p = PageRequest.of(pageNumber - 1, numberOfRecords);
 		Page<Bus> page = busRepository.findAll(p);
-		 List<Bus> buses = page.getContent();
+		List<Bus> buses = page.getContent();
 		return buses;
 		
 	}

@@ -28,14 +28,13 @@ public class BusController {
 	@Autowired
 	BusService busService;
 	
-	@PostMapping("/addBus")
-	public ResponseEntity<String> addBus(@Valid @RequestBody Bus bus){
-		String response = busService.addBus(bus);
+	@PostMapping("/addBus/{routeId}")
+	public ResponseEntity<String> addBus(@Valid @RequestBody Bus bus, 
+					@PathVariable Integer routeId){
+		String response = busService.addBus(bus, routeId);
 		return new ResponseEntity<String>(response,HttpStatus.CREATED);
 	}
-	
-	
-	
+
 	@PatchMapping("/updateBus")
 	public ResponseEntity<String> updateBus(@Valid @RequestBody Bus bus){
 		String response = busService.updateBus(bus);
@@ -62,10 +61,12 @@ public class BusController {
 	}
 	
 
-	@GetMapping("students/{pageNumber}/{numberOfRecords}")
-	public List<Bus> getStudentPageWiseHandler(@PathVariable("pageNumber") Integer pageNumber,
+	@GetMapping("buses/{pageNumber}/{numberOfRecords}")
+	public ResponseEntity<List<Bus>> getStudentPageWiseHandler(@PathVariable("pageNumber") Integer pageNumber,
 			@PathVariable("numberOfRecords") Integer numberOfRecords){
-		return busService.getAllBusPageWise(numberOfRecords, pageNumber);
+		
+		List<Bus> busList = busService.getAllBusPageWise(pageNumber, numberOfRecords);
+		return new ResponseEntity<List<Bus>>(busList,HttpStatus.OK);
 	}
 		
 	

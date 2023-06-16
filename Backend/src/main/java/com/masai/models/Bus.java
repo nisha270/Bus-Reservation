@@ -1,5 +1,7 @@
 package com.masai.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -37,12 +39,12 @@ public class Bus {
     @NotBlank(message="bus type is required")
     private String busType;
     
-    @Column(name="route_from")
-    @NotBlank(message="")
-    private String routeFrom;
-    
-    @Column(name="route_to")
-    private String routeTo;
+//    @Column(name="route_from")
+//    @NotBlank(message="")
+//    private String routeFrom;
+//    
+//    @Column(name="route_to")
+//    private String routeTo;
     
     @NotNull(message="Please mention number of seats")
     @Column(name="seats")
@@ -57,9 +59,12 @@ public class Bus {
     @Column(name="available_seats")
     private int availableSeats;
     // Many buses can belong to one route
+    
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "route_id") // Foreign key column in the Bus table referencing the Route table
     private Route route;
 
+    
 }
 
