@@ -6,8 +6,8 @@ import com.masai.models.Route;
 
 public interface RouteService {
     Route addRoute(Route route);
-    Route updateRoute(Route route);
-    Route deleteRoute(int routeId);
+    String updateRoute(Route route);
+    String deleteRoute(int routeId);
     Route viewRoute(int routeId);
-    List<Route> viewAllRoutes();
+    List<Route> viewAllRoutesPageWise(Integer pageNumber,Integer numberOfRecords);
 }
