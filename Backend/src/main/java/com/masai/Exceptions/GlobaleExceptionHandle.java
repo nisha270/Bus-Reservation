@@ -19,6 +19,13 @@ public class GlobaleExceptionHandle {
 		MyErrorDetails err = new MyErrorDetails(LocalDateTime.now(), ex.getMessage(), w.getDescription(false));
 		return new ResponseEntity<>(err, HttpStatus.BAD_REQUEST);
 	}
+	
+	@ExceptionHandler(NotFoundException.class)
+	public ResponseEntity<MyErrorDetails> NotFoundExceptionHandler(BusExceptions ex, WebRequest w) {
+
+		MyErrorDetails err = new MyErrorDetails(LocalDateTime.now(), ex.getMessage(), w.getDescription(false));
+		return new ResponseEntity<>(err, HttpStatus.BAD_REQUEST);
+	}
 
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	public ResponseEntity<MyErrorDetails> MANVExceptionHandler(MethodArgumentNotValidException ex, WebRequest req) {
