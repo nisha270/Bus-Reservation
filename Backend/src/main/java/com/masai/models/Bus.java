@@ -39,12 +39,12 @@ public class Bus {
     @NotBlank(message="bus type is required")
     private String busType;
     
-//    @Column(name="route_from")
-//    @NotBlank(message="")
-//    private String routeFrom;
-//    
-//    @Column(name="route_to")
-//    private String routeTo;
+    @Column(name="route_from")
+    @NotBlank(message="")
+    private String routeFrom;
+    
+    @Column(name="route_to")
+    private String routeTo;
     
     @NotNull(message="Please mention number of seats")
     @Column(name="seats")
