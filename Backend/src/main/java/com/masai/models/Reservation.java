@@ -9,23 +9,38 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import jakarta.validation.constraints.*;
 
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int reservationId;
-    private String reservationStatus;
+    
+    @NotEmpty(message = "Reservation Status cannot be null")
+    private ReservationStatus reservationStatus;
+    
+    @NotEmpty(message = "Reservation Type Should be AC/SL/GEN")
     private String reservationType;
+  
     private LocalDate reservationDate;
     private LocalTime reservationTime;
+    
+    @NotNull(message = "Source must be there")
     private String source;
+    
+    @NotNull(message = "destination must be there")
     private String destination;
 
     // Each reservation is associated with one bus
