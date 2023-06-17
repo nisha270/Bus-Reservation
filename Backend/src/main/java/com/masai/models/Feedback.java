@@ -8,6 +8,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,12 +20,16 @@ import lombok.NoArgsConstructor;
 public class Feedback {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int feedbackId;
-    private int driverRating;
-    private int serviceRating;
-    private int overallRating;
+    private Integer feedbackId;
+    @NotNull(message="Driver rating can not be null")
+    private Integer driverRating;
+    @NotNull(message="Service rating can not be null")
+    private Integer serviceRating;
+    @NotNull(message="Overall rating can not be null")
+    private Integer overallRating;
+    @NotNull(message="Comments can not be null")
     private String comments;
-    private LocalDate feedbackDate;
+    private String feedbackDate;
 
     // Each feedback is associated with one user
     @OneToOne
