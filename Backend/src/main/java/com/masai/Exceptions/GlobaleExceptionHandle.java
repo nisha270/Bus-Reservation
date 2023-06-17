@@ -14,20 +14,16 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 public class GlobaleExceptionHandle {
 
 	@ExceptionHandler(BusExceptions.class)
-	public ResponseEntity<String> userDoesNotExistExceptionHandler(BusExceptions me){
-		return new ResponseEntity<String>(me.getMessage(),HttpStatus.NOT_FOUND);
-	}
-	
-	@ExceptionHandler(NotFoundException.class)
-	public ResponseEntity<MyErrorDetails> NotFoundExceptionHandler(BusExceptions ex, WebRequest w) {
+	public ResponseEntity<MyErrorDetails> EmployeeExceptionHandler(BusExceptions ex, WebRequest w) {
 
 		MyErrorDetails err = new MyErrorDetails(LocalDateTime.now(), ex.getMessage(), w.getDescription(false));
 		return new ResponseEntity<>(err, HttpStatus.BAD_REQUEST);
 	}
 
-	@ExceptionHandler(RouteException.class)
-	public ResponseEntity<String> MANVExceptionHandler(RouteException ex) {
-		return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
+	@ExceptionHandler(MethodArgumentNotValidException.class)
+	public ResponseEntity<MyErrorDetails> MANVExceptionHandler(MethodArgumentNotValidException ex, WebRequest req) {
+		MyErrorDetails err = new MyErrorDetails(LocalDateTime.now(), ex.getMessage(), req.getDescription(false));
+		return new ResponseEntity<>(err, HttpStatus.BAD_REQUEST);
 	}
 	
 	@ExceptionHandler(Exception.class)

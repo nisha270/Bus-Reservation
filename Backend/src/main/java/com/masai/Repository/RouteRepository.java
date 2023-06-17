@@ -7,5 +7,5 @@ import org.springframework.data.domain.Pageable;
 import com.masai.models.Route;
 
 public interface RouteRepository extends JpaRepository<Route, Integer>, PagingAndSortingRepository<Route, Integer> {
-    
+    Page<Route> findAll(Pageable pageable);
 }

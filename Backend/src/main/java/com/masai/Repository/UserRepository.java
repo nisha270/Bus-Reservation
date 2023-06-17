@@ -9,6 +9,4 @@ import com.masai.models.User;
 
 public interface UserRepository extends JpaRepository<User, Integer>, PagingAndSortingRepository<User, Integer> {
     Page<User> findAll(Pageable pageable);
-
-	User findByUserName(String email);
 }
