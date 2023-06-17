@@ -1,8 +1,5 @@
 package com.masai.Services;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,14 +10,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.masai.Exceptions.NotFoundException;
-import com.masai.Repository.BusRepository;
-import com.masai.Repository.FeedbackRepository;
 import com.masai.Repository.ReservationRepository;
-import com.masai.Repository.RouteRepository;
 import com.masai.Repository.UserRepository;
-import com.masai.models.Bus;
-import com.masai.models.Feedback;
-import com.masai.models.Reservation;
 import com.masai.models.User;
 
 @Service
@@ -32,14 +23,6 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private ReservationRepository reservationRepository;
 
-	@Autowired
-	private BusRepository busRepository;
-	
-	@Autowired
-	private FeedbackRepository feedbackRepository;
-	
-	@Autowired
-	private RouteRepository routeRepository;
 
 	@Override
 	public User addUser(User user) throws NotFoundException {
@@ -106,6 +89,16 @@ public class UserServiceImpl implements UserService {
 		}
 	}
 
+
+//	@Override
+//	public List<User> getSortedAndPaginatedUser(String field, String direction, Integer pageNumber, Integer numberOfRecords) {
+//	    Sort sort = Sort.by(direction.equals("asc") ? Sort.Direction.ASC : Sort.Direction.DESC, field);
+//	    Pageable pageable = PageRequest.of(pageNumber - 1, numberOfRecords, sort);
+//	    Page<User> page = userRepository.findAll(pageable);
+//	    return page.getContent();
+//	}
+//	
+	
 	@Override
 	public List<User> getAllUserPageWise(Integer pageNumber, Integer numberOfRecords) {
 		
@@ -114,6 +107,9 @@ public class UserServiceImpl implements UserService {
 		 List<User> Users = page.getContent();
 		return Users;
 	}
+	
+	
+	
 
 	@Override
 	public List<User> getAllUsers() throws NotFoundException {
@@ -124,55 +120,5 @@ public class UserServiceImpl implements UserService {
 		
 		return users;
 	}
-
-//	@Override
-//	public String login(String username, String password) throws NotFoundException{
-//		 User user = userRepository.findByUserName(username);
-//		 if(user==null)
-//			 throw new NotFoundException("Something went Wrong!");
-//	        if (user != null && user.getPassword().equals(password)) {
-//	           return "Login Successfully";
-//	        }
-//			return "UserName or Possword Wrong";
-//	        
-//	}
-//
-//	@Override
-//	public Reservation bookTicket(String username, String destination, String busName) throws NotFoundException {
-//		User user = userRepository.findByUserName(username);
-//        if (user == null) {
-//            throw new NotFoundException("User not found");
-//        }
-//        
-//       
-//        return null;
-//
-//	}
-//
-//	@Override
-//	public Feedback submitFeedback(int userId, int busId, String feedbackText) throws NotFoundException {
-//		User user = userRepository.findById(userId)
-//                .orElseThrow(() -> new NotFoundException("User not found."));
-//
-//		return null;
-//	}
-//
-//	@Override
-//	public Feedback updateFeedback(int feedbackId, String updatedFeedbackText) throws NotFoundException {
-//		Feedback feedback = feedbackRepository.findById(feedbackId)
-//                .orElseThrow(() -> new NotFoundException("Feedback not found."));
-//
-//        feedback.setComments(updatedFeedbackText);
-//
-//        return feedbackRepository.save(feedback);
-//	}
-//
-//	@Override
-//	public Page<Reservation> getAllReservations(int userId, Pageable pageable) throws NotFoundException {
-//        User user = userRepository.findById(userId)
-//                .orElseThrow(() -> new NotFoundException("User not found."));
-//
-//        return reservationRepository.findAllByUser(user, pageable);
-//    }
 
 }

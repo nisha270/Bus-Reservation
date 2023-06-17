@@ -13,10 +13,7 @@ import com.masai.models.Bus;
 public interface BusRepository extends JpaRepository<Bus, Integer>,PagingAndSortingRepository<Bus, Integer> {
     
 	@Query("Select b from Bus b where b.busType = ?1 ")
-	public List<Bus> getBusByBusType(String b);
-
-	public Bus findByBusName(String busName);
-
+	List<Bus> getBusByBusType(String b);
 	
 	
 }
