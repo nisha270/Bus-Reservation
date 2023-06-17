@@ -9,9 +9,11 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
 import com.masai.models.Reservation;
+import com.masai.models.User;
 
 @Repository
 public interface ReservationRepository extends JpaRepository<Reservation, Integer>,PagingAndSortingRepository<Reservation, Integer> {
     Page<Reservation> findAll(Pageable pageable);
+    Page<Reservation> findAllByUser(User user, Pageable pageable);
     List<Reservation> findAllByOrderByReservationDateDesc(Pageable pageable);
 }

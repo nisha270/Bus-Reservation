@@ -1,6 +1,7 @@
 package com.masai.models;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 import jakarta.persistence.Entity;
@@ -18,7 +19,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Reservation {
-    @Id
+  
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int reservationId;
     private String reservationStatus;
