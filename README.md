@@ -56,7 +56,7 @@ Your valuable feedback is greatly appreciated. You can reach out to me via the b
 
 [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/anand-kumar-49641816a/)
 
-- [Shahid](https://github.com/RADHIKESHS)
+- [Radhikesh](https://github.com/RADHIKESHS)
 
 [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/radhikesh-thakur-b0a6bb24a/)
 
