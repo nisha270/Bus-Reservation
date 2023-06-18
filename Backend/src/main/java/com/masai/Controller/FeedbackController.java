@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.masai.Services.FeedbackService;
 import com.masai.models.Feedback;
@@ -17,7 +18,7 @@ import com.masai.models.Feedback;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import jakarta.validation.Valid;
 
-@Controller
+@RestController
 public class FeedbackController {
 	
 	@Autowired

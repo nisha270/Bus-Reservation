@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.masai.Services.BusService;
 import com.masai.models.Bus;
@@ -22,7 +23,7 @@ import com.masai.models.Bus;
 import jakarta.persistence.PersistenceUnit;
 import jakarta.validation.Valid;
 
-@Controller
+@RestController
 public class BusController {
 	
 	@Autowired
