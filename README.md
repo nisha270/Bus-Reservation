@@ -1,7 +1,6 @@
 
 <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
 
-
 <div align="center">
 <h1>🚌 Bus Trip App</h1><br>
   <img src="https://t4.ftcdn.net/jpg/03/96/55/29/360_F_396552956_VAZMfge1XgKaCY3UWOglYHdk7UNaPPck.jpg" alt="logo" style="width:80%">
@@ -28,7 +27,9 @@ The Bus Reservation feature in our Bus Trip App allows users to conveniently boo
 - MySQL
 
 ## Entity Relationship diagram :---
-![SweetMart_ER_Diagram](https://user-images.githubusercontent.com/112757338/236708670-6a77cbb1-520e-4191-831e-ceb435c49a8f.png)
+
+![WhatsApp Image 2023-06-19 at 02 06 05](https://github.com/nisha270/uncovered-shame-5230/assets/112757338/6a397ea1-0040-4c9b-b4f5-3ef125f0d467)
+
 
  ## 🚀 Features
 
