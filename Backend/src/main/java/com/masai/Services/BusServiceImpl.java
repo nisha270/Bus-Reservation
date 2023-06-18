@@ -1,6 +1,5 @@
 package com.masai.Services;
 
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -35,12 +34,15 @@ public class BusServiceImpl implements BusService{
 		if(!opt.isPresent()) {
 			throw new BusExceptions("The Route you entered does not exist");
 		}
+		
 		Route route = opt.get();
 		List<Bus> busList = route.getBuses();
 		if(busList == null) {
 			busList = new ArrayList<>();
 		}
+		
 		busList.add(bus);
+		
 		route.setBuses(busList);
 		bus.setRoute(route);
 		busRepository.save(bus);

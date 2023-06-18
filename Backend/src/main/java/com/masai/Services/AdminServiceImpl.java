@@ -34,7 +34,7 @@ public class AdminServiceImpl implements AdminService{
 	
 	@Autowired
 	AdminRepository adminRepository;
-
+	
 	@Override
 	public String registerAdmin(Admin admin) {
 		adminRepository.save(admin);

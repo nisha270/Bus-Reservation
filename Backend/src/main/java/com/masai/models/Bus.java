@@ -62,7 +62,7 @@ public class Bus {
     
     @ManyToOne
     @JsonIgnore
-    @JoinColumn(name = "route_id") // Foreign key column in the Bus table referencing the Route table
+    @JoinColumn(name = "route_id" ) // Foreign key column in the Bus table referencing the Route table
     private Route route;
 
     
