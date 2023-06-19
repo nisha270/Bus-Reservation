@@ -17,12 +17,23 @@ import com.masai.models.Feedback;
 
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import jakarta.validation.Valid;
+import lombok.extern.slf4j.Slf4j;
 
 @RestController
+@Slf4j
 public class FeedbackController {
 	
 	@Autowired
     private FeedbackService feedbackService;
+	
+	
+	@GetMapping("/checking")
+	public String checkingFedbackController() {
+		log.info("application is working properly");
+		
+		return "welcome to feedback controller";
+	}
+	
 
     @PostMapping("/feebacks")
     public ResponseEntity<Feedback> addFeedback( @Valid @RequestBody Feedback feedback) {
@@ -37,7 +48,7 @@ public class FeedbackController {
         return new ResponseEntity<>(updatedFeedback, HttpStatus.OK);
     }
 
-    @GetMapping("/{feedbackId}")
+    @GetMapping("feedback/{feedbackId}")
     public ResponseEntity<Feedback> viewFeedback(@PathVariable int feedbackId) {
         Feedback feedback = feedbackService.viewFeedback(feedbackId);
         if (feedback != null) {

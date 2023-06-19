@@ -8,14 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.masai.Exceptions.BusExceptions;
-import com.masai.Exceptions.NoReservationAvailableException;
 import com.masai.Exceptions.NoReservationFoundException;
 import com.masai.Exceptions.NoUserFoundException;
 import com.masai.Repository.BusRepository;
 import com.masai.Repository.ReservationRepository;
 import com.masai.Repository.UserRepository;
 import com.masai.models.Reservation;
-import com.masai.models.User;
 
 @Service
 public class ReservationServiceImpl implements ReservationService {
@@ -38,6 +36,8 @@ public class ReservationServiceImpl implements ReservationService {
 		
 		return reservationRepository.save(reservation);
 	}
+	
+
 
 	
 	@Override

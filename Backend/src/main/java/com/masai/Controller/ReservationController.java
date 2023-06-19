@@ -13,16 +13,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.masai.Repository.ReservationRepository;
 import com.masai.Services.ReservationService;
 import com.masai.mail.EmailService;
 import com.masai.mail.EmailService;
+import com.masai.models.Feedback;
 import com.masai.models.Reservation;
 
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
+import jakarta.mail.MessagingException;
+//import io.swagger.v3.oas.annotations.parameters.RequestBody;
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 
 @RestController
@@ -32,6 +37,9 @@ public class ReservationController {
 	
 	@Autowired
     private ReservationService reservationService;
+	
+	@Autowired
+	ReservationRepository reservationRepository;
 	
 	@Autowired
 	EmailService emailService;
@@ -50,10 +58,28 @@ public class ReservationController {
 
 //  <--- Method to create a new reservation --->
 	
+//	try {
+//		 log.info("mail might send now");
+//		 System.out.println("before mail");
+//		 
+//
+//       emailService.sendTicketBookingEmail("name is antholo ", bus.getBusName() , "Ticket details...");
+//       
+//       log.warn("mail send successfully");
+//       System.out.println("after mail");
+//       
+//} catch (MessagingException e) {
+//       // Handle exception appropriately (e.g., log the error)
+//	 System.out.println("catch mail");
+//       return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to send email notification.");
+//   }
+
+	
     @PostMapping("/reservation")
-    public ResponseEntity<String> createReservation(@RequestBody Reservation reservation) {
-        Reservation createdReservation = reservationService.createReservation(reservation);
+    public ResponseEntity<String> createReservation(@RequestBody @Valid Reservation reservation) {
+        Reservation createdReservation = reservationService.save(reservation);
         if (createdReservation != null) {
+        	System.out.println(reservation.toString());
             return ResponseEntity.status(HttpStatus.CREATED).body("Reservation created successfully");
         } else {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to create reservation");

@@ -18,22 +18,31 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.masai.Services.BusService;
+import com.masai.mail.EmailService;
 import com.masai.models.Bus;
 
+import jakarta.mail.MessagingException;
 import jakarta.persistence.PersistenceUnit;
 import jakarta.validation.Valid;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @RestController
 public class BusController {
 	
 	@Autowired
 	BusService busService;
 	
+	@Autowired
+	EmailService emailService;
+	
 	@PostMapping("/addBus/{routeId}")
 	public ResponseEntity<String> addBus(@Valid @RequestBody Bus bus, 
 					@PathVariable Integer routeId){
 		String response = busService.addBus(bus, routeId);
+		
 		return new ResponseEntity<String>(response,HttpStatus.CREATED);
+		
 	}
 
 	@PatchMapping("/updateBus")

@@ -54,7 +54,7 @@ public class User {
     private String email;
 
     // One user can have multiple reservations
-    @OneToMany(mappedBy = "user") 
+    @OneToMany(mappedBy = "user")
     private List<Reservation> reservations;
 
 }

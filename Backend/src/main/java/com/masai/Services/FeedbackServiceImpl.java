@@ -13,13 +13,17 @@ import com.masai.Exceptions.NotFoundException;
 import com.masai.Repository.FeedbackRepository;
 import com.masai.models.Feedback;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Service
+@Slf4j
 public class FeedbackServiceImpl implements FeedbackService {
 	
 	@Autowired FeedbackRepository fRepo;
 
 	 @Override
 	    public Feedback addFeedback(Feedback feedback) {
+		 log.info("feedback added successfully");
 	        return fRepo.save(feedback);
 	    }
 
@@ -36,6 +40,7 @@ public class FeedbackServiceImpl implements FeedbackService {
 
 	    @Override
 	    public Feedback viewFeedback(int feedbackId) {
+	    	
 	        return fRepo.findById(feedbackId).orElse(null);
 	    }
 
