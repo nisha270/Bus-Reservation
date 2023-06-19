@@ -9,13 +9,15 @@
 <p>
 The Bus Reservation feature in our Bus Trip App allows users to conveniently book their bus tickets. With just a few clicks, users can secure their seats for their desired destination or by selecting a specific bus.
 <hr>
+
 ## This was a collaborative project made in 5 days. 
 
 ## 👥 Team members :--
-1. Anand Kumar
-2. Radhikesh
-3. Amita
-4. Nisha
+1. Md Zaid Siddique
+2. Anand Kumar
+3. Radhikesh
+4. Amita
+5. Nisha
 
 
 ## Tech-Stack used :--
@@ -61,10 +63,13 @@ Your valuable feedback is greatly appreciated. You can reach out to me via the b
 
 [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/radhikesh-thakur-b0a6bb24a/)
 
-- [Amita](https://github.com/AMITA0115)
+- [Amita Kumari](https://github.com/AMITA0115)
 
 [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/amita-kumari-a67619271/)
 
+- [Md Zaid Siddique](https://Mdzaidsiddique.github.io)
+
+[![linkedin](https://www.linkedin.com/in/mdzaidsiddique/)
 
 - [Nisha](https://github.com/nisha270)
 
