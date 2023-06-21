@@ -68,8 +68,9 @@ Your valuable feedback is greatly appreciated. You can reach out to me via the b
 [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/amita-kumari-a67619271/)
 
 - [Md Zaid Siddique](https://Mdzaidsiddique.github.io)
+  
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/mdzaidsiddique/)
 
-[![linkedin](https://www.linkedin.com/in/mdzaidsiddique/)
 
 - [Nisha](https://github.com/nisha270)
 
